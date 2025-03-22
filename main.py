@@ -5,7 +5,7 @@ from scipy.signal import savgol_filter
 from sklearn.preprocessing import MinMaxScaler
 
 
-global_variable = "背"
+global_variable = "尾"
 
 # 读取 Excel 文件
 excel_file = pd.ExcelFile(f'{global_variable}.xlsx')
@@ -42,14 +42,14 @@ for i in range(selected_data.shape[0]):
 # 将处理后的数据转换为 DataFrame 对象
 processed_data = pd.DataFrame(processed_data, columns=selected_wavelength)
 
-import os
 
-# 将处理后的数据保存为新的 Excel 文件，使用相对路径
-save_dir = '处理后的数据'
-if not os.path.exists(save_dir):
-    os.makedirs(save_dir)
-file_name = os.path.join(save_dir, f'{global_variable}部-处理后的数据.xlsx')
-processed_data.to_excel(file_name)
+# # 将处理后的数据保存为新的 Excel 文件，使用相对路径
+# import os
+# save_dir = '处理后的数据'
+# if not os.path.exists(save_dir):
+#     os.makedirs(save_dir)
+# file_name = os.path.join(save_dir, f'{global_variable}部-处理后的数据.xlsx')
+# processed_data.to_excel(file_name)
 
 # 绘制每个样本的折射率随波长变化的折线图
 for i in range(processed_data.shape[0]):
@@ -58,7 +58,7 @@ for i in range(processed_data.shape[0]):
 # 设置 x 轴范围，使 1200 位于原点
 plt.xlim(left=1200)
 # 设置图表标题和坐标轴标签
-plt.title('反射率随波长变化图')
+plt.title(f'{global_variable}部反射率随波长变化图')
 plt.xlabel('波长（nm）')
 plt.xticks(rotation=45)
 plt.ylabel('反射率')
