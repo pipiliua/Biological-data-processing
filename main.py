@@ -43,13 +43,13 @@ for i in range(selected_data.shape[0]):
 processed_data = pd.DataFrame(processed_data, columns=selected_wavelength)
 
 
-# # 将处理后的数据保存为新的 Excel 文件，使用相对路径
-# import os
-# save_dir = '处理后的数据'
-# if not os.path.exists(save_dir):
-#     os.makedirs(save_dir)
-# file_name = os.path.join(save_dir, f'{global_variable}部-处理后的数据.xlsx')
-# processed_data.to_excel(file_name)
+# 将处理后的数据保存为新的 Excel 文件，使用相对路径
+import os
+save_dir = '处理后的数据'
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)
+file_name = os.path.join(save_dir, f'{global_variable}部-处理后的数据.xlsx')
+processed_data.to_excel(file_name)
 
 # 绘制每个样本的折射率随波长变化的折线图
 for i in range(processed_data.shape[0]):
@@ -77,5 +77,4 @@ plt.savefig(f'pcitures/{global_variable}部-反射率随波长变化图.png')
 # 显示图表
 plt.show()
 
-plt.show()
 
